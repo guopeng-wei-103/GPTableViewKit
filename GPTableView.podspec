@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
     s.name         = 'GPTableView'
-    s.version      = '0.5.0'
+    s.version      = '0.5.1'
     s.summary      = 'A module of iOS UITableView.'
 
     s.homepage     = 'https://github.com/pengGitHubUp/GPTableViewKit'
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
     s.source       = { :git => 'https://github.com/pengGitHubUp/GPTableViewKit.git', :tag => s.version.to_s }
 
-    s.source_files  = '*'
+    s.source_files  = 'GPTableViewKit/**/*.{h,m}'
 
     s.framework  = 'UIKit'
 
