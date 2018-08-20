@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
 
 
     s.name         = "GPTableView"
-    s.version      = "0.0.2"
+    s.version      = "0.0.3"
     s.summary      = "A module of iOS UITableView."
 
-    s.homepage     = "https://blog.csdn.net/peng_up"
+    s.homepage     = "https://github.com/pengGitHubUp/GPTableViewKit"
 
     s.license      = { :type => "MIT", :file => "LICENSE" }
 
