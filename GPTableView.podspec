@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
     s.platform     = :ios, '8.0'
 
-    s.source       = { :git => 'https://gitlab.com/peng_dev/GPTableView.git', :tag => s.version.to_s }
+    s.source       = { :git => 'https://github.com/pengGitHubUp/GPTableViewKit.git', :tag => s.version.to_s }
 
     s.source_files  = '*'
 
