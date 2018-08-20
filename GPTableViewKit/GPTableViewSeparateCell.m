@@ -9,7 +9,6 @@
 
 #import "GPTableViewSeparateCell.h"
 #import "GPTableViewRowManager.h"
-#import <Masonry/Masonry.h>
 
 @interface GPTableViewSeparateCell ()
 
@@ -25,9 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self.contentView addSubview:self.lineView];
-        [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
-        }];
+        _lineView.frame = CGRectMake(0, 0, 320, 0.5);
     }
     return self;
 }
@@ -36,7 +33,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     
     _lineView.backgroundColor = model;
-
+    
     CGFloat leftOffset = 0.f;
     CGFloat rightOffset = 0.f;
     if ([self.row.subModel isKindOfClass:[NSArray class]]) {
@@ -45,9 +42,10 @@
         rightOffset = [lfOffset[1] floatValue];
     }
     
-    [_lineView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(0, leftOffset, 0, rightOffset));
-    }];
+    CGFloat width = CGRectGetWidth(self.contentView.bounds) - leftOffset - rightOffset;
+    CGFloat height = CGRectGetHeight(self.contentView.bounds);
+    
+    _lineView.frame = CGRectMake(leftOffset, 0, width, height);
     
 }
 

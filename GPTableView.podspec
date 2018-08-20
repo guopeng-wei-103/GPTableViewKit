@@ -50,9 +50,6 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "guopeng" => "752717288@qq.com" }
-  # Or just: s.author    = "Your Nameguopeng"
-  # s.authors            = { "Your Nameguopeng" => "752717288@qq.com" }
-  # s.social_media_url   = "http://twitter.com/Your Nameguopeng"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -60,14 +57,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
   s.platform     = :ios, "8.0"
-
-  #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
-  # s.watchos.deployment_target = "2.0"
-  # s.tvos.deployment_target = "9.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -88,7 +78,6 @@ s.source       = { :git => "https://gitlab.com/peng_dev/GPTableView.git", :tag =
   #
 
   s.source_files  = "GPTableView/GPTableViewKit/*.{h,m}"
-  # s.exclude_files = "Classes/Exclude"
 
   s.public_header_files = "GPTableView/GPTableViewKit/*.h"
 
@@ -100,12 +89,6 @@ s.source       = { :git => "https://gitlab.com/peng_dev/GPTableView.git", :tag =
   #  You can preserve files from being cleaned, please don't preserve
   #  non-essential files like tests, examples and documentation.
   #
-
-  # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
-
-  # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
-
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
