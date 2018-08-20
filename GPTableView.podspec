@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
 
     s.source       = { :git => "https://gitlab.com/peng_dev/GPTableView.git", :tag => "#{s.version}" }
 
-    s.source_files  = "GPTableViewKit/*"
+    s.source_files  = "*"
 
-    s.public_header_files = "GPTableViewKit/*.h"
+#s.public_header_files = "*.h"
 
     s.framework  = "UIKit"
 
