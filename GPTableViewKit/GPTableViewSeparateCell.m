@@ -24,7 +24,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self.contentView addSubview:self.lineView];
-        _lineView.frame = CGRectMake(0, 0, 320, 0.5);
     }
     return self;
 }
@@ -42,17 +41,19 @@
         rightOffset = [lfOffset[1] floatValue];
     }
     
-    CGFloat width = CGRectGetWidth(self.contentView.bounds) - leftOffset - rightOffset;
-    CGFloat height = CGRectGetHeight(self.contentView.bounds);
-    
-    _lineView.frame = CGRectMake(leftOffset, 0, width, height);
-    
+    NSDictionary *bindings = NSDictionaryOfVariableBindings(_lineView);
+    NSDictionary* metrics = @{@"leftMargin":@(leftOffset),@"rightMargin":@(rightOffset),@"topMargin":@(0),@"bottomMargin":@(0)};
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leftMargin-[_lineView]-rightMargin-|" options:0 metrics:metrics views:bindings]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-topMargin-[_lineView]-bottomMargin-|" options:0 metrics:metrics views:bindings]];
 }
+
+
 
 /** line */
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc]init];
+        _lineView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _lineView;
 }
