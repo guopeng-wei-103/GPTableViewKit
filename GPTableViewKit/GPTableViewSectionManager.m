@@ -56,6 +56,8 @@
     GPTableViewRowManager *row = [GPTableViewRowManager row];
     row.rowHeight = height;
     row.cellName = @"GPTableViewSeparateCell";
+    NSInteger date = [[NSDate date] timeIntervalSince1970] * 1000 + random() % 10000;
+    row.reuseIdentifier = [NSString stringWithFormat:@"GPTableViewSeparateCell%ld",(long)date];
     row.model= color;
     row.subModel = @[@(left), @(right)];
     return row;
