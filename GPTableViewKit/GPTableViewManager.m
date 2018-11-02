@@ -245,7 +245,7 @@
     return 0;
 }
 
-- (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section {
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section; {
     GPTableViewSectionManager *sectionModel = self.sections[section];
     if (sectionModel.header) {
         return sectionModel.header.headerView;
