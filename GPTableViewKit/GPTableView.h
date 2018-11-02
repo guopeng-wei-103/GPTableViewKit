@@ -20,3 +20,4 @@ FOUNDATION_EXPORT const unsigned char GPTableViewVersionString[];
 #import "GPTableViewManager.h"
 #import "GPTableViewRowManager.h"
 #import "GPTableViewSectionManager.h"
+#import "GPTableViewSHeaderManager.h"

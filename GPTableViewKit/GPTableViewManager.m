@@ -234,6 +234,25 @@
     return cell;
 }
 
+#pragma mark  - ->> headers <<--
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section; {
+    
+    GPTableViewSectionManager *sectionModel = self.sections[section];
+    if (sectionModel.header) {
+        return sectionModel.header.headerHeight;
+    }
+    return 0;
+}
+
+- (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section {
+    GPTableViewSectionManager *sectionModel = self.sections[section];
+    if (sectionModel.header) {
+        return sectionModel.header.headerView;
+    }
+    return nil;
+}
+
 
 #pragma mark 滚动 UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

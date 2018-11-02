@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class GPTableViewRowManager;
+@class GPTableViewRowManager, GPTableViewSHeaderManager;
 
 @interface GPTableViewSectionManager : NSObject
 
 @property (nonatomic, readonly, strong) NSArray *rows;
+
+
+/** header */
+@property (nonatomic, strong) GPTableViewSHeaderManager *header;
 
 
 /*!
