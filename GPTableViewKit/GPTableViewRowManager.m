@@ -15,6 +15,7 @@
         _rowHeight = 50;
         _selectStyle = UITableViewCellSelectionStyleNone;
         _editingStyle = UITableViewCellEditingStyleNone;
+        _editingTitle = @"删除";
     }
     return self;
 }

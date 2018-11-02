@@ -39,9 +39,11 @@ typedef void(^didSelectRowBytitle)(GPTableViewRowManager *row, NSString *title);
 @property (nonatomic, assign) NSInteger flag;
 /** 选择 (bool flag) */
 @property (nonatomic, assign) BOOL selected;
+
 /** 编辑模式 */
 @property (nonatomic, assign) UITableViewCellEditingStyle editingStyle;
-
+/** editTitle */
+@property (nonatomic, copy) NSString *editingTitle;
 
 /** 点击事件 indexPath*/
 @property (nonatomic, copy) void (^didSelectRow) (void);

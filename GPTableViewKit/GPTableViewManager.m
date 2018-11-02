@@ -173,7 +173,7 @@
     if (rowModel.editingStyle != UITableViewCellEditingStyleDelete) {
         return nil;
     } else {
-        UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:rowModel.editingTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             if (rowModel.didEditRow) {
                 rowModel.didEditRow(rowModel);
             }
