@@ -291,5 +291,14 @@
     }
 }
 
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if ([self.delegate respondsToSelector:@selector(tableViewWillEndDragging:withVelocity:targetContentOffset:)]) {
+        UITableView *tableView = (UITableView *)scrollView;
+        [self.delegate tableViewWillEndDragging:tableView withVelocity:velocity targetContentOffset:targetContentOffset];
+    }
+}
+
+
 @end
 

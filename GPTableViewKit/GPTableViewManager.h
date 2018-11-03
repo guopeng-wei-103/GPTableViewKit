@@ -25,6 +25,8 @@
 
 - (void)tableViewDidEndDragging:(UITableView *)tableView willDecelerate:(BOOL)decelerate;
 
+- (void)tableViewWillEndDragging:(UITableView *)tableView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
+
 @end
 
 

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger headerHeight;
 
 /** cell 名 */
-@property (nonatomic, strong) UITableViewHeaderFooterView *headerView;
+@property (nonatomic, strong) UIView *headerView;
 
 @end
 
