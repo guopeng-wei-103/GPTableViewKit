@@ -40,10 +40,9 @@ typedef void(^didSelectRowBytitle)(GPTableViewRowManager *row, NSString *title);
 /** 选择 (bool flag) */
 @property (nonatomic, assign) BOOL selected;
 
-/** 编辑模式 */
-@property (nonatomic, assign) UITableViewCellEditingStyle editingStyle;
 /** editTitle */
-@property (nonatomic, copy) NSString *editingTitle;
+@property (nonatomic, strong, readonly) NSArray *editingStyles;
+- (void)addEditingTitle:(NSString *)title bgColor:(UIColor *)bgColor;
 
 /** 点击事件 indexPath*/
 @property (nonatomic, copy) void (^didSelectRow) (void);
@@ -55,7 +54,7 @@ typedef void(^didSelectRowBytitle)(GPTableViewRowManager *row, NSString *title);
 @property (nonatomic, copy) void (^didCallBackWithDataAndIndex) (GPTableViewRowManager *row, id data, NSInteger index);
 
 /** 编辑 */
-@property (nonatomic, copy) void (^didEditRow) (GPTableViewRowManager *row);
+@property (nonatomic, copy) void (^didEditRow) (NSInteger index);
 
 /** 初始化类方法 */
 + (instancetype)row;

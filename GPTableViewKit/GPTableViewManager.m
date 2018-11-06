@@ -31,14 +31,14 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
-
+            
         }
         
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
         _tableView.contentOffset = CGPointMake(0, -_tableView.contentInset.top);
-
+        
     }
     return self;
 }
@@ -114,7 +114,7 @@
 
 #pragma mark  - >> 获取cell <<
 - (id)getCell:(NSString *)cell {
-
+    
     if (cell.length == 0) {
         return nil;
     } else {
@@ -126,9 +126,9 @@
                     return [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
                 }
             }
-
+            
         }
-    return nil;
+        return nil;
     }
 }
 
@@ -148,19 +148,6 @@
 
 #pragma mark  - >> edit <<
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath; {
-    
-    if (indexPath.section >= self.sections.count) {
-        NSLog(@"\n -------- \n tableView error \n -------- \n");
-        return UITableViewCellEditingStyleNone;
-    }
-    
-    GPTableViewSectionManager *sectionModel = self.sections[indexPath.section];
-    GPTableViewRowManager *rowModel = sectionModel.rows[indexPath.row];
-    
-    return rowModel.editingStyle;
-}
-
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section >= self.sections.count) {
@@ -170,22 +157,29 @@
     GPTableViewSectionManager *sectionModel = self.sections[indexPath.section];
     GPTableViewRowManager *rowModel = sectionModel.rows[indexPath.row];
     
-    if (rowModel.editingStyle != UITableViewCellEditingStyleDelete) {
+    if (rowModel.editingStyles.count == 0) {
         return nil;
     } else {
-        UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:rowModel.editingTitle handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-            if (rowModel.didEditRow) {
-                rowModel.didEditRow(rowModel);
-            }
-        }];
-        action.backgroundColor = [UIColor redColor];
-        return @[action];
+        NSMutableArray *actions = [[NSMutableArray alloc] init];
+        NSInteger index = 0;
+        for (NSDictionary * dic in rowModel.editingStyles) {
+            UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:[dic objectForKey:@"title"] handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                if (rowModel.didEditRow) {
+                    rowModel.didEditRow(index);
+                }
+            }];
+            action.backgroundColor = [dic objectForKey:@"color"];
+            [actions addObject:action];
+            index ++;
+        }
+        
+        return actions;
     }
 }
 
 #pragma mark DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView; {
-
+    
     return self.sections.count;
 }
 
@@ -208,7 +202,7 @@
     } else {
         NSLog(@"\n -------- \n tableView error \n -------- \n");
     }
-
+    
     NSString *identifier = @"GPTableViewCell";
     if (rowModel.reuseIdentifier.length) {
         identifier = rowModel.reuseIdentifier;
@@ -217,7 +211,7 @@
     }
     
     GPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-
+    
     Class cellClass = NSClassFromString(rowModel.cellName);
     if (!cell) {
         
@@ -228,7 +222,7 @@
     
     cell.row = rowModel;
     cell.indexPath = indexPath;
-
+    
     [cell cellWillAppear:rowModel.model];
     
     return cell;
@@ -279,7 +273,7 @@
     
     if ([self.delegate respondsToSelector:@selector(tableViewDidEndDragging:willDecelerate:)]) {
         UITableView *tableView = (UITableView *)scrollView;
-
+        
         [self.delegate tableViewDidEndDragging:tableView willDecelerate:decelerate];
     }
 }
