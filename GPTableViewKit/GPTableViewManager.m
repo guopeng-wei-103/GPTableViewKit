@@ -147,6 +147,15 @@
 }
 
 #pragma mark  - >> edit <<
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath; {
+    GPTableViewSectionManager *sectionModel = self.sections[indexPath.section];
+    GPTableViewRowManager *rowModel = sectionModel.rows[indexPath.row];
+    
+    if (rowModel.editingStyles.count == 0) {
+        return UITableViewCellEditingStyleNone;
+    }
+    return UITableViewCellEditingStyleDelete;
+}
 
 - (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
