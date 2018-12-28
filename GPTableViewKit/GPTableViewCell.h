@@ -18,6 +18,9 @@
 /** indexPath for current cell */
 @property (nonatomic, strong) NSIndexPath *indexPath;
 
+/** indexPath for current cell */
+@property (nonatomic, strong) UIButton *bottomButton;
+
 
 /** DidLoad oneTime ,can be used as init */
 - (void)cellDidLoad;
