@@ -213,15 +213,20 @@
     }
     
     NSString *identifier = @"GPTableViewCell";
-    if (rowModel.reuseIdentifier.length) {
+    NSString *cellName = @"GPTableViewCell";
+    if (cellName.length > 0) {
+        cellName = rowModel.cellName;
+    }
+    
+    if (rowModel.reuseIdentifier.length > 0) {
         identifier = rowModel.reuseIdentifier;
-    } else if (rowModel.cellName.length) {
-        identifier = rowModel.cellName;
+    } else {
+        identifier = cellName;
     }
     
     GPTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    Class cellClass = NSClassFromString(rowModel.cellName);
+    Class cellClass = NSClassFromString(cellName);
     if (!cell) {
         
         cell = [[cellClass?:[GPTableViewCell class] alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
