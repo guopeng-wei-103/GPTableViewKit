@@ -40,6 +40,8 @@
 }
 
 - (void)selectCellAction_gptable {
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    
     if (self.row.didSelectRow) {
         self.row.didSelectRow();
     }
