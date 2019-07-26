@@ -134,6 +134,13 @@
 
 
 #pragma mark - tableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GPTableViewSectionManager *sectionModel = self.sections[indexPath.section];
+    GPTableViewRowManager *rowModel = sectionModel.rows[indexPath.row];
+    if (rowModel.didSelectRow) {
+        rowModel.didSelectRow();
+    }
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     
     if (indexPath.section >= self.sections.count) {

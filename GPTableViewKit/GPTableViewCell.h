@@ -18,8 +18,8 @@
 /** indexPath for current cell */
 @property (nonatomic, strong) NSIndexPath *indexPath;
 
-/** indexPath for current cell */
-@property (nonatomic, strong) UIButton *bottomButton;
+/** highlightView */
+@property (nonatomic, strong) UIView *highlighView;
 
 
 /** DidLoad oneTime ,can be used as init */

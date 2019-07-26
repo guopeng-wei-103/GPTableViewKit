@@ -15,15 +15,15 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        [self.contentView addSubview:self.bottomButton];
+        [self.contentView addSubview:self.highlighView];
         
         NSMutableDictionary *views = [NSMutableDictionary new];
-        [views setObject:_bottomButton forKey:@"button"];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[button]-0-|" options:0 metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[button]-0-|" options:0 metrics:nil views:views]];
+        [views setObject:_highlighView forKey:@"sbView"];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[sbView]-0-|" options:0 metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[sbView]-0-|" options:0 metrics:nil views:views]];
         
         [self cellDidLoad];
-
+        
     }
     return self;
 }
@@ -34,40 +34,28 @@
 
 - (void)cellWillAppear:(id)model; {
     
-    if (!self.row.didSelectRow) {
-        self.bottomButton.userInteractionEnabled = NO;
-    }
 }
 
-- (void)selectCellAction_gptable {
-    [[UIApplication sharedApplication].keyWindow endEditing:YES];
-    
-    if (self.row.didSelectRow) {
-        self.row.didSelectRow();
-    }
-}
 
 /** bottom */
-- (UIButton *)bottomButton {
-    if (!_bottomButton) {
-        _bottomButton = [[UIButton alloc]init];
-        [_bottomButton setBackgroundImage:[self imageWithColor:[UIColor clearColor] size:CGSizeMake(1, 1)] forState:UIControlStateNormal];
-        [_bottomButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:247/255.0 green:248/255.0 blue:250/255.0 alpha:1] size:CGSizeMake(1, 1)] forState:UIControlStateHighlighted];
-        [_bottomButton addTarget:self action:@selector(selectCellAction_gptable) forControlEvents:UIControlEventTouchUpInside];
-        _bottomButton.translatesAutoresizingMaskIntoConstraints = NO;
+- (UIView *)highlighView {
+    if (!_highlighView) {
+        _highlighView = [[UIView alloc]init];
+        _highlighView.translatesAutoresizingMaskIntoConstraints = NO;
+        _highlighView.backgroundColor = UIColor.clearColor;
     }
-    return _bottomButton;
+    return _highlighView;
 }
 
-- (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
-    if (!color || size.width <= 0 || size.height <= 0) return nil;
-    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, color.CGColor);
-    CGContextFillRect(context, rect);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    
+    _highlighView.backgroundColor = [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1];
 }
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    _highlighView.backgroundColor = UIColor.clearColor;
+}
+
 @end
