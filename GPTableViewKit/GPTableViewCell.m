@@ -59,7 +59,7 @@
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
+    [super touchesCancelled:touches withEvent:event];
     _highlighView.backgroundColor = UIColor.clearColor;
 }
 
