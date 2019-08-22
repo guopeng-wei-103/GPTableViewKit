@@ -22,10 +22,12 @@
 - (void)tableViewDidScroll:(UITableView *)tableView;
 /** 结束滚动 */
 - (void)tableViewDidEndScroll:(UITableView *)tableView;
-
+/** 结束拖拽 */
 - (void)tableViewDidEndDragging:(UITableView *)tableView willDecelerate:(BOOL)decelerate;
-
+/** will结束拖拽 */
 - (void)tableViewWillEndDragging:(UITableView *)tableView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
+/** willBeginDragging */
+- (void)tableViewWillBeginDragging:(UITableView *)tableView;
 
 @end
 

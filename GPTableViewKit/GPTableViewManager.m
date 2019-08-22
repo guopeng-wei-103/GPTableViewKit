@@ -278,6 +278,12 @@
     }
     
 }
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView; {
+    if ([self.delegate respondsToSelector:@selector(tableViewWillBeginDragging:)]) {
+        UITableView *tableView = (UITableView *)scrollView;
+        [self.delegate tableViewWillBeginDragging:tableView];
+    }
+}
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     if ([self.delegate respondsToSelector:@selector(tableViewDidEndScroll:)]) {
