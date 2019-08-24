@@ -29,7 +29,7 @@
 }
 - (void)cellWillAppear:(id)model {
     
-    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
     
     _lineView.backgroundColor = model;
     

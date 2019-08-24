@@ -54,7 +54,7 @@ typedef void(^didSelectRowBytitle)(GPTableViewRowManager *row, NSString *title);
 @property (nonatomic, copy) void (^didCallBackWithDataAndIndex) (GPTableViewRowManager *row, id data, NSInteger index);
 
 /** 点击事件 index */
-@property (nonatomic, copy) BOOL (^ifEnableWhenSelectRowAtIndex) (NSInteger index);
+@property (nonatomic, copy) BOOL (^ifCanSelectRowAtIndex) (NSInteger index);
 
 /** 编辑 */
 @property (nonatomic, copy) void (^didEditRow) (NSInteger index);
