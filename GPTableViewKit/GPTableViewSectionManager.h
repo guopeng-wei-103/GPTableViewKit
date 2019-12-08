@@ -40,7 +40,7 @@
  @brief 添加分割row
  */
 - (void)addSeparateRowHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right;
-
+- (void)addSeparateRowHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right backColor:(UIColor *)bgColor;
 
 /*!
  @brief 在指定行插入row
@@ -63,6 +63,6 @@
  @param right 右边距
  @return rowModel
  */
-+ (GPTableViewRowManager *)separateRowModelWithHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right;
++ (GPTableViewRowManager *)separateRowModelWithHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right bgColor:(UIColor *)bgColor;
 
 @end

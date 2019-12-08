@@ -29,7 +29,11 @@
 }
 - (void)cellWillAppear:(id)model {
     
-    self.backgroundColor = [UIColor clearColor];
+    if ([self.row.subModel isKindOfClass:UIColor.class]) {
+        self.backgroundColor = self.row.subModel;
+    } else {
+        self.backgroundColor = [UIColor clearColor];
+    }
     
     _lineView.backgroundColor = model;
     

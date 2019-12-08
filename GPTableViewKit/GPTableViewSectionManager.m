@@ -48,21 +48,25 @@
 
 - (void)addSeparateRowHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right; {
     
-    GPTableViewRowManager *row = [GPTableViewSectionManager separateRowModelWithHeight:height color:color leftMargin:left rightMargin:right];
+    GPTableViewRowManager *row = [GPTableViewSectionManager separateRowModelWithHeight:height color:color leftMargin:left rightMargin:right bgColor:UIColor.clearColor];
     [_rowsArray addObject:row];
 }
+- (void)addSeparateRowHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right backColor:(UIColor *)bgColor {
+    GPTableViewRowManager *row = [GPTableViewSectionManager separateRowModelWithHeight:height color:color leftMargin:left rightMargin:right bgColor:bgColor];
+       [_rowsArray addObject:row];
+}
++ (GPTableViewRowManager *)separateRowModelWithHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right bgColor:(UIColor *)bgColor {
 
-+ (GPTableViewRowManager *)separateRowModelWithHeight:(CGFloat)height color:(UIColor *)color leftMargin:(CGFloat)left rightMargin:(NSInteger)right; {
     GPTableViewRowManager *row = [GPTableViewRowManager row];
     row.rowHeight = height;
     row.cellName = @"GPTableViewSeparateCell";
     NSInteger date = [[NSDate date] timeIntervalSince1970] * 1000 + arc4random() % 10000;
     row.reuseIdentifier = [NSString stringWithFormat:@"GPTableViewSeparateCell%ld",(long)date];
     row.model= color;
+    row.subModel = bgColor;
     row.subModel = @[@(left), @(right)];
     return row;
 }
-
 
 - (void)insertRow:(id)row atIndex:(NSInteger)index {
     
