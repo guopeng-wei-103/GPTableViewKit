@@ -29,8 +29,8 @@
 }
 - (void)cellWillAppear:(id)model {
     
-    if ([self.row.subModel isKindOfClass:UIColor.class]) {
-        self.backgroundColor = self.row.subModel;
+    if ([self.row.otherModel isKindOfClass:UIColor.class]) {
+        self.backgroundColor = self.row.otherModel;
     } else {
         self.backgroundColor = [UIColor clearColor];
     }

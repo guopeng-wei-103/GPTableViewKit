@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
     s.name         = 'GPTableView'
-    s.version      = '0.8.3'
+    s.version      = '0.8.5'
     s.summary      = 'A module of iOS UITableView.'
 
     s.homepage     = 'https://github.com/pengGitHubUp/GPTableViewKit'

@@ -63,7 +63,7 @@
     NSInteger date = [[NSDate date] timeIntervalSince1970] * 1000 + arc4random() % 10000;
     row.reuseIdentifier = [NSString stringWithFormat:@"GPTableViewSeparateCell%ld",(long)date];
     row.model= color;
-    row.subModel = bgColor;
+    row.otherModel = bgColor;
     row.subModel = @[@(left), @(right)];
     return row;
 }
